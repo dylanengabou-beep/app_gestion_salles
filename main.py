@@ -32,12 +32,42 @@ for s in salles:
 # Supprimer la salle
 dao.delete_salle("B101")
 
-from views.view_salle import ViewSalle
+from views.view_salle import Viewsalle
 
-app = ViewSalle()
+app = Viewsalle()
 app.mainloop()
 
-from views.view_salle import ViewSalle
+from data.dao_salle import DataSalle
+from models.salle import Salle
 
-app = ViewSalle()
-app.mainloop()
+dao = DataSalle()
+
+# Test connexion
+conn = dao.get_connection()
+print("Connexion réussie :", conn.is_connected())
+conn.close()
+
+# Test insert
+s1 = Salle("A01", "Al-Khwârizmî", "Amphie", 250)
+dao.insert_salle(s1)
+print("Salle ajoutée.")
+
+# Test get_salle
+s = dao.get_salle("A01")
+s.afficher_infos()
+
+# Test update
+s1.libelle = "Salle Modifiée"
+dao.update_salle(s1)
+print("Salle modifiée.")
+
+# Test get_salles
+salles = dao.get_salles()
+for salle in salles:
+    salle.afficher_infos()
+
+# Test delete
+dao.delete_salle("A01")
+print("Salle supprimée.")
+
+
