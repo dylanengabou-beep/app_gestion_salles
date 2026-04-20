@@ -62,3 +62,19 @@ class ViewSalle(ctk.CTk):
 
     # Associer le bouton
     self.btn_ajouter.configure(command=self.ajouter_salle)
+
+    def modifier_salle(self):
+        salle = Salle(
+            self.entry_code.get(),
+            self.entry_libelle.get(),
+            self.entry_type.get(),
+            self.entry_capacite.get()
+        )
+        ok, msg = self.service_salle.modifier_salle(salle)
+        messagebox.showinfo("Info", msg) if ok else messagebox.showerror("Erreur", msg)
+        self.lister_salles()
+
+
+# Associer le bouton
+self.btn_modifier.configure(command=self.modifier_salle)
+
