@@ -1,7 +1,8 @@
-# Application de gestion de salles
+# app_gestion_salles
 
-Nom : [Ton Nom]  
-Prénom : [Ton Prénom]
+**Nom :** Prénom Nom  
+**Cours :** INF1093 - Programmation II  
 
 ## Description
-Application Python avec interface graphique permettant de gérer des salles, utilisant MySQL et une architecture en couches.
+Application Python de gestion de salles avec interface graphique (customTkinter),
+base de données MySQL et architecture en couches (Model, DAO, Service, View).

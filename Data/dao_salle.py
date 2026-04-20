@@ -73,11 +73,11 @@ class DataSalles:
         conn = self.get_connection()
         cursor = conn.cursor()
 
-        query = "SELECT * FROM salle"
+        query = "SELECT * FROM salles"
         cursor.execute(query)
         results = cursor.fetchall()
 
-        salle = [salles(*row) for row in results]
+        Salles = [salle(*row) for row in results]
 
         cursor.close()
         conn.close()
