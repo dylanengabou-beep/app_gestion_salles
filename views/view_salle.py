@@ -140,3 +140,9 @@ def lister_salles(self):
     self.treeList.delete(*self.treeList.get_children())
     for s in self.service_salle.recuperer_salles():
         self.treeList.insert("", "end", values=(s.code, s.libelle, s.type, s.capacite))
+
+# Dans __init__, après le Treeview :
+self.lister_salles()
+
+# Dans ajouter_salle(), modifier_salle(), supprimer_salle() :
+# self.lister_salles() est déjà appelé à la fin de chaque méthode
