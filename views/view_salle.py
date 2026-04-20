@@ -89,3 +89,23 @@ def supprimer_salle(self):
 # Associer le bouton
 self.btn_supprimer.configure(command=self.supprimer_salle)
 
+
+def rechercher_salle(self):
+    code = self.entry_code.get()
+    salle = self.service_salle.rechercher_salle(code)
+    if salle:
+        self.entry_code.delete(0, "end");
+        self.entry_code.insert(0, salle.code)
+        self.entry_libelle.delete(0, "end");
+        self.entry_libelle.insert(0, salle.libelle)
+        self.entry_type.delete(0, "end");
+        self.entry_type.insert(0, salle.type)
+        self.entry_capacite.delete(0, "end");
+        self.entry_capacite.insert(0, salle.capacite)
+    else:
+        messagebox.showwarning("Introuvable", f"Aucune salle avec le code '{code}'.")
+
+
+# Associer le bouton
+self.btn_rechercher.configure(command=self.rechercher_salle)
+
