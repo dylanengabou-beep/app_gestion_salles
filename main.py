@@ -70,4 +70,28 @@ for salle in salles:
 dao.delete_salle("A01")
 print("Salle supprimée.")
 
+from services.services_salle import ServiceSalle
+from models.salle import Salle
+
+service = ServiceSalle()
+
+# Ajouter
+ok, msg = service.ajouter_salle(Salle("B01", "Réseaux", "Laboratoire", 16))
+print(msg)
+
+# Lister
+for s in service.recuperer_salles():
+    s.afficher_infos()
+
+# Modifier
+ok, msg = service.modifier_salle(Salle("B01", "Réseaux Avancés", "Laboratoire", 20))
+print(msg)
+
+# Rechercher
+s = service.rechercher_salle("B01")
+if s: s.afficher_infos()
+
+# Supprimer
+service.supprimer_salle("B01")
+print("Supprimé.")
 
