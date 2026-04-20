@@ -1,19 +1,15 @@
-from models.salles import Salle
-S1 = Salle("A345", "salle informatique", "laboratoire", 30)
-S1.afficher_infos()
+from Data.dao_salle import DataSalle
+from models.salle import Salle
 
-from Data.dao_salles import DataSalles
-from models.salles import salle
-
-dao = DataSalles()
+dao = DataSalle()
 
 # Test connexion
 try:
     conn = dao.get_connection()
     print("Connexion réussie")
     conn.close()
-except Exception as e:
-    print("Erreur de connexion:", e)
+except:
+    print("Erreur de connexion")
 
 # Ajouter une salle
 s1 = Salle("B101", "Salle test", "Classe", 25)
@@ -35,3 +31,13 @@ for s in salles:
 
 # Supprimer la salle
 dao.delete_salle("B101")
+
+from views.view_salle import ViewSalle
+
+app = ViewSalle()
+app.mainloop()
+
+from views.view_salle import ViewSalle
+
+app = ViewSalle()
+app.mainloop()
