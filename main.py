@@ -95,3 +95,7 @@ if s: s.afficher_infos()
 service.supprimer_salle("B01")
 print("Supprimé.")
 
+from views.view_salle import ViewSalle
+
+app = ViewSalle()
+app.mainloop()
