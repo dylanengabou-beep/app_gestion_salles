@@ -78,3 +78,14 @@ class ViewSalle(ctk.CTk):
 # Associer le bouton
 self.btn_modifier.configure(command=self.modifier_salle)
 
+
+def supprimer_salle(self):
+    code = self.entry_code.get()
+    self.service_salle.supprimer_salle(code)
+    messagebox.showinfo("Info", f"Salle '{code}' supprimée.")
+    self.lister_salles()
+
+
+# Associer le bouton
+self.btn_supprimer.configure(command=self.supprimer_salle)
+
